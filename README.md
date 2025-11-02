@@ -18,7 +18,7 @@ O foco desta etapa é implementar o **analisador léxico (Scanner)**, responsáv
 ## 📘 Referência
 **Livro:** [Crafting Interpreters - Scanning](https://craftinginterpreters.com/scanning.html)  
 **Capítulo:** 4 – *Scanning*  
-**Progresso até:** Seção **4.4 – The Scanner Class**
+**Progresso até:** Seção **4.7 – Reserved Words and Identifiers**
 
 ---
 
