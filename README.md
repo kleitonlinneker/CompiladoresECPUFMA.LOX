@@ -42,7 +42,7 @@ src/
             └── GenerateAst.java
 ```
 
-
+---
 
 
 ## 🧪 Testando o Parser
@@ -72,6 +72,7 @@ O formato de impressão da AST segue o estilo usado no livro *Crafting Interpret
 - `(* ... ...)` representa a multiplicação entre os dois grupos.
 - `(== ... 7.0)` compara o resultado da multiplicação com o literal `7.0`.
 
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
