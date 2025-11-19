@@ -24,6 +24,30 @@ Até esta etapa implementamos: o **Parser de Expressões da Linguagem**, respons
 
 ---
 
+## 📂 Estrutura do Projeto
+src/
+└── com/
+└── craftinginterpreters/
+├── lox/
+│ ├── Lox.java
+│ ├── Token.java
+│ ├── TokenType.java
+│ ├── Scanner.java
+│ ├── Parser.java
+│ ├── Expr.java ← Gerado automaticamente
+│ └── AstPrinter.java
+└── tool/
+└── GenerateAst.java
+
+
+
+🧪 Testando o Parser
+
+Você pode testar a geração da AST usando um código simples, como:
+
+(1 + 2) * (3 - 4) == 7
+
+
 Os commits no repositório seguem o desenvolvimento etapa por etapa, como solicitado.
 
 ## 🛠️ Tecnologias Utilizadas
