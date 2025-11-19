@@ -47,12 +47,31 @@ src/
 
 ## 🧪 Testando o Parser
 
-Você pode testar a geração da AST usando um código simples, como:
 
+Para testar o parser do projeto, você pode usar a seguinte expressão simples:
+
+Execute `Lox`:
+```
 (1 + 2) * (3 - 4) == 7
+```
 
+A saída esperada do `Lox` é:
 
-Os commits no repositório seguem o desenvolvimento etapa por etapa, como solicitado.
+```
+(== (* (group (+ 1.0 2.0)) (group (- 3.0 4.0))) 7.0)
+
+```
+
+### 🧩 Como interpretar essa estrutura
+
+O formato de impressão da AST segue o estilo usado no livro *Crafting Interpreters*, representando nós da árvore como expressões aninhadas:
+
+- `(+ 1.0 2.0)` representa a soma.
+- `(- 3.0 4.0)` representa a subtração.
+- `group (...)` representa parênteses explícitos no código-fonte.
+- `(* ... ...)` representa a multiplicação entre os dois grupos.
+- `(== ... 7.0)` compara o resultado da multiplicação com o literal `7.0`.
+
 
 ## 🛠️ Tecnologias Utilizadas
 
