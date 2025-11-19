@@ -49,7 +49,7 @@ Você pode testar a geração da AST usando um código simples, como:
 (1 + 2) * (3 - 4) == 7
 
 
-Os commits no repositório seguem o desenvolvimento etapa por etapa, como solicitado.
+
 
 ## 🛠️ Tecnologias Utilizadas
 
