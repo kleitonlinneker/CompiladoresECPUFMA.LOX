@@ -6,12 +6,29 @@ Disciplina **Compiladores** – Engenharia da Computação UFMA
 
 Professor: Sérgio Costa
 
-Desenvolvedores: Kleiton Linneker Barbosa Pinheiro; Isabel Silva de Araujo
+Desenvolvedores:
+- **Kleiton Linneker Barbosa Pinheiro**
+- **Isabel Silva de Araujo**
 
 
 ## 🎯 Objetivo
-Desenvolvimento de um interpretador para a linguagem **Lox**, seguindo o conteúdo do livro *Crafting Interpreters* (Robert Nystrom).  
-Até esta etapa implementamos: o **Parser de Expressões da Linguagem**, responsável por analisar as expressões da linguagem **Lox**, transformando a sequência de tokens produzidos pelo scanner em estruturas da AST, de acordo com a gramática da linguagem. Ele é um parser recursivo descendente.
+Implementação incremental de um interpretador completo para a linguagem **Lox**, seguindo o conteúdo do livro *Crafting Interpreters* (Robert Nystrom).  
+
+Até o momento, a implementação cobre:
+
+- ✔ Scanner (Cap. 4)
+- ✔ Representação da AST via GenerateAst (Cap. 5)
+- ✔ Parser recursivo descendente (Cap. 6)
+- ✔ **Interpreter** capaz de avaliar expressões (Cap. 7)
+- ✔ Suporte a:
+    - Números
+    - Booleanos
+    - Operadores aritméticos `+ - * /`
+    - Operadores de comparação `> >= < <= == !=`
+    - Operadores lógicos `!` e `or`/`and`
+    - Agrupamento `( ... )`
+
+Com isso, o Lox já **lê → analisa → constrói AST → interpreta → imprime o resultado.**
 
 ---
 
@@ -34,8 +51,10 @@ src/
         ├── lox/
         │   ├── AstPrinter.java
         │   ├── Expr.java
+        │   ├── Interpreter.java
         │   ├── Lox.java
         │   ├── Parser.java
+        │   ├── RuntimeError.java        
         │   ├── Scanner.java
         │   ├── Token.java
         │   └── TokenType.java
@@ -45,13 +64,43 @@ src/
 
 ---
 
+## 📄 Explicação dos Arquivos
 
-## 🧪 Testando o Parser
+### 🔹 **Lox.java**
+Arquivo principal.  
+Responsável por iniciar o scanner → parser → interpreter.
+
+### 🔹 **Scanner.java**
+Lê os caracteres de entrada e transforma em tokens.
+
+### 🔹 **Token / TokenType**
+Estruturas que representam um token e seus tipos.
+
+### 🔹 **Expr.java**
+Arquivo gerado automaticamente por `GenerateAst.java`.  
+Define a representação da árvore sintática abstrata.
+
+### 🔹 **Parser.java**
+Converte uma lista de tokens em uma AST seguindo a gramática.
+
+### 🔹 **Interpreter.java**
+Avalia a AST e retorna o resultado.
+
+Implementa os métodos `visitLiteralExpr`, `visitBinaryExpr`, `visitUnaryExpr`, etc.
+
+### 🔹 **AstPrinter.java**
+Usado para depurar a AST imprimindo a estrutura da expressão.
+
+### 🔹 **GenerateAst.java**
+Ferramenta que gera automaticamente o arquivo `Expr.java`.
+
+---
 
 
-Para testar o parser do projeto, você pode usar a seguinte expressão simples:
+## 🧪 Testando o Interpretador
 
-Execute `Lox`:
+Você pode rodar o programa e digitar:
+
 ```
 (1 + 2) * (3 - 4) == 7
 ```
@@ -59,19 +108,8 @@ Execute `Lox`:
 A saída esperada do `Lox` é:
 
 ```
-(== (* (group (+ 1.0 2.0)) (group (- 3.0 4.0))) 7.0)
-
+false
 ```
-
-### 🧩 Como interpretar essa estrutura
-
-O formato de impressão da AST segue o estilo usado no livro *Crafting Interpreters*, representando nós da árvore como expressões aninhadas:
-
-- `(+ 1.0 2.0)` representa a soma.
-- `(- 3.0 4.0)` representa a subtração.
-- `group (...)` representa parênteses explícitos no código-fonte.
-- `(* ... ...)` representa a multiplicação entre os dois grupos.
-- `(== ... 7.0)` compara o resultado da multiplicação com o literal `7.0`.
 
 ---
 
@@ -80,3 +118,19 @@ O formato de impressão da AST segue o estilo usado no livro *Crafting Interpret
 - Linguagem: **Java 21**
 - IDE: **IntelliJ IDEA 2025.2.3 (Ultimate Edition)**
 - Git + GitHub
+
+---
+
+## ▶ Como Executar
+
+### Via linha de comando:
+
+```sh
+javac com/craftinginterpreters/lox/*.java com/craftinginterpreters/tool/*.java
+java com.craftinginterpreters.lox.Lox
+```
+
+Ou execute diretamente via IDE.
+
+---
+
