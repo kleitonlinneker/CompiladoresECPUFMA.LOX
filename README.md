@@ -20,7 +20,7 @@ Até esta etapa implementamos: o **Parser de Expressões da Linguagem**, respons
 **Capítulo:** 4 – *Scanning*  
 **Capítulo:** 5 – *Representing Code*  
 **Capítulo:** 6 – *Parsing Expressions*  
-**Progresso até:** Seção **6.4 – Wiring up the Parser**
+**Progresso até:** Seção **6.4 – **
 
 ---
 
